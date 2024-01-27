@@ -1,0 +1,19 @@
+:root {
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #E5452F;
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+button {
+  cursor: pointer;
+}
