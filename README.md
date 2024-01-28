@@ -4,6 +4,6 @@
 
 Change flexbox properties and export them
 
-![screenshot](https://github.com/ThisIsTheCarm1ne/Flexbox-Playground/tree/main/readme_media/1.png?raw=true)
+![screenshot](https://raw.githubusercontent.com/ThisIsTheCarm1ne/Flexbox-Playground/main/readme_media/1.png)
 
 Made with Vue 3.0.
