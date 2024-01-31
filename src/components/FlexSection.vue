@@ -39,7 +39,7 @@
   button {
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 1.30vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -49,5 +49,16 @@
   button:hover {
     background: #E31F1F;
     color: white;
+  }
+  @media only screen and (max-width: 720px) {
+    .display_container {
+      width: 90%;
+    }
+    .choice_buttons {
+      gap: 5vh;
+    }
+    button {
+      font-size: 2em;
+    }
   }
 </style>

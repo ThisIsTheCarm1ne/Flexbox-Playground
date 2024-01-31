@@ -34,5 +34,9 @@ export const store = reactive({
   alignItemsPicked: "normal",
   setAlignItems(option: string) {
     this.alignItemsPicked = option
+  },
+  exportMobileOpen: false,
+  setExportMobileOpen(option: boolean) {
+    this.exportMobileOpen = option
   }
 })

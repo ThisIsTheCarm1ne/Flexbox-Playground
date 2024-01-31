@@ -4,6 +4,7 @@
 
   let openExportModal = ref(false);
   let exportRef = ref("");
+  let isMobile = ref<boolean>(window.innerWidth <= 720);
 
   const copyExport = () => {
     const contentToCopy = exportRef.value.innerText;
@@ -15,11 +16,32 @@
     document.execCommand('copy');
     document.body.removeChild(textarea);
   }
+
+  const handleExportButtonClick = () => {
+    openExportModal.value = true;
+
+    if (isMobile.value) {
+      store.setExportMobileOpen(true);
+    }
+  };
+  const handleExportDialogClose = () => {
+    openExportModal.value = false;
+
+    if (isMobile.value) {
+      store.setExportMobileOpen(false);
+    }
+  };
 </script>
 
 <template>
   <div class="display_container">
-    <button @click="openExportModal = true">Export</button>
+    <button
+      @click="handleExportButtonClick"
+      class="export_btn"
+      v-if="!store.exportMobileOpen"
+    >
+      Export
+    </button>
   </div>
   <div 
     class="modal"
@@ -27,10 +49,11 @@
   >
     <div class="dialog">
       <div class="buttons">
-        <button @click="openExportModal = false">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <button @click="handleExportDialogClose">
+          <svg v-if="!store.exportMobileOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
+          <span v-else>Exit</span>
         </button>
         <button @click="copyExport()">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -119,5 +142,25 @@
     flex-direction: column;
     gap: 0.5vw;
     font-size: 1.5rem;
+  }
+  @media only screen and (max-width: 720px) {
+    .export_btn {
+      font-size: 2em;
+    }
+    .modal {
+      width: 100%;
+      height: 80%;
+      background: none;
+      top: 20%;
+    }
+    .dialog {
+      box-shadow: none;
+      border: none;
+      width: 90%;
+    }
+    .export {
+      font-size: 2em;
+      gap: 2vh;
+    }
   }
 </style>

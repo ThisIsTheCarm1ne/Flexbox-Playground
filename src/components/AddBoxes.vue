@@ -18,16 +18,27 @@
     gap: 2em;
   }
   p {
-    font-size: 5em;
+    font-size: 4vw;
     text-align: center;
   }
   button {
     background: #E31F1F;
-    font-size: 2em;
+    font-size: 2vw;
+    margin: auto;
     border-radius: 100%;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
     color: white;
     width: 2.86vw;
     height: 2.86vw;
+  }
+  @media only screen and (max-width: 720px) {
+    p {
+      font-size: 20vw;
+    }
+    button {
+      width: 10vw;
+      height: 10vw;
+      font-size: 6vw;
+    }
   }
 </style>

@@ -1,6 +1,6 @@
 # Flexbox Playground
 
-*In Development*
+*Preparing for deployment*
 
 Change flexbox properties and export them
 

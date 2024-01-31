@@ -24,7 +24,7 @@
   button {
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 1.3vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -34,5 +34,10 @@
   button:hover {
     background: #E31F1F;
     color: white;
+  }
+  @media only screen and (max-width: 720px) {
+    button {
+      font-size: 5vw;
+    }
   }
 </style>
