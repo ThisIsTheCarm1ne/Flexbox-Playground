@@ -1,42 +1,70 @@
-import { reactive } from "vue";
+import { reactive, toRefs } from "vue";
 
-export const store = reactive({
+const initialState = {
   boxAmount: 0,
-  increment() {
-    this.boxAmount++
-  },
-  decrement() {
-    this.boxAmount--
-  },
   visibleSection: "choiceSection",
-  setVisibleSection(changedVisibleSection: string) {
-    this.visibleSection = changedVisibleSection
-  },
-  resetVisibleSection() {
-    this.visibleSection = "choiceSection"
-  },
   flexDirectionPicked: "row",
-  setFlexDirection(option: string) {
-    this.flexDirectionPicked = option
-  },
   flexWrapPicked: "wrap",
-  setFlexWrap(option: string) {
-    this.flexWrapPicked = option
-  },
   alignContentPicked: "normal",
-  setAlignContent(option: string) {
-    this.alignContentPicked = option
-  },
   justifyContentPicked: "normal",
-  setJustifyContent(option: string) {
-    this.justifyContentPicked = option
-  },
   alignItemsPicked: "normal",
-  setAlignItems(option: string) {
-    this.alignItemsPicked = option
-  },
   exportMobileOpen: false,
-  setExportMobileOpen(option: boolean) {
-    this.exportMobileOpen = option
-  }
-})
+};
+
+const savedState = JSON.parse(localStorage.getItem("vueStore") || "{}") || initialState;
+
+const replacer = (_: string, value: any) => (value && value.__v_isRef ? value.value : value);
+
+export const store = reactive(savedState);
+
+store.setFlexDirection = (value: string) => {
+  store.flexDirectionPicked = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.setFlexWrap = (value: string) => {
+  store.flexWrapPicked = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.setAlignContent = (value: string) => {
+  store.alignContentPicked = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.setJustifyContent = (value: string) => {
+  store.justifyContentPicked = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.setAlignItems = (value: string) => {
+  store.alignItemsPicked = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.setExportMobileOpen = (value: boolean) => {
+  store.exportMobileOpen = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.increment = () => {
+  store.boxAmount++;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.decrement = () => {
+  store.boxAmount--;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.setVisibleSection = (value: string) => {
+  store.visibleSection = value;
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+store.resetVisibleSection = () => {
+  store.visibleSection = "choiceSection";
+  localStorage.setItem("vueStore", JSON.stringify(toRefs(store), replacer));
+};
+
+export default store;
