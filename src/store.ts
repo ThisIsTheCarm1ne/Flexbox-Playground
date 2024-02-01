@@ -11,7 +11,9 @@ const initialState = {
   exportMobileOpen: false,
 };
 
-const savedState = JSON.parse(localStorage.getItem("vueStore") || "{}") || initialState;
+const savedState = localStorage.getItem("vueStore") !== null
+  ? JSON.parse(localStorage.getItem("vueStore") || "{}")
+  : initialState;
 
 const replacer = (_: string, value: any) => (value && value.__v_isRef ? value.value : value);
 
