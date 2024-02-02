@@ -1,6 +1,6 @@
 # Flexbox Playground
 
-*In development*
+[Deployed](https://flexbox-playground-b3a1f.web.app/)
 
 Change flexbox properties and export them
 
